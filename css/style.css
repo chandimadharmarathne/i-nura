@@ -192,7 +192,7 @@ input, select, textarea { width:100%; padding:14px 16px; border:1px solid var(--
 .footer-bottom { border-top:1px solid rgba(255,255,255,0.1); margin-top:40px; padding-top:20px; display:flex; justify-content:space-between; }
 
 /* Mobile */
-@media (max-width:900px) {
+/* @media (max-width:900px) {
   .hamburger { display:flex; }
   .nav-links { position:fixed; top:70px; left:0; right:0; background:white; flex-direction:column; padding:24px; gap:16px; display:none; box-shadow:var(--shadow-md); }
   .nav-links.active { display:flex; }
@@ -204,4 +204,117 @@ input, select, textarea { width:100%; padding:14px 16px; border:1px solid var(--
   .services-grid, .projects-grid, .why-grid { grid-template-columns:1fr; }
   .form-row { flex-direction:column; }
   .process-steps { flex-direction:column; }
+} */
+
+/* Mobile */
+@media (max-width:900px) {
+  .hamburger {
+    display:flex;
+  }
+
+  .nav-links {
+    position:fixed;
+    top:70px;
+    left:0;
+    right:0;
+    background:white;
+    flex-direction:column;
+    padding:24px;
+    gap:16px;
+    display:none;
+    box-shadow:var(--shadow-md);
+  }
+
+  .nav-links.active {
+    display:flex;
+  }
+
+  .services-grid,
+  .projects-grid,
+  .why-grid {
+    grid-template-columns:1fr 1fr;
+  }
+
+  .about-grid,
+  .contact-grid {
+    grid-template-columns:1fr;
+  }
+
+  .hero h1 {
+    font-size:2.8rem;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:32px 24px;
+  }
+
+  .footer-brand {
+    grid-column:1 / -1;
+  }
+
+  .footer-links {
+    min-width:0;
+  }
+
+  .footer-links a {
+    overflow-wrap:anywhere;
+    word-break:break-word;
+  }
+}
+
+@media (max-width:600px) {
+  .services-grid,
+  .projects-grid,
+  .why-grid {
+    grid-template-columns:1fr;
+  }
+
+  .form-row {
+    flex-direction:column;
+  }
+
+  .process-steps {
+    flex-direction:column;
+  }
+
+  /* Footer */
+  .footer {
+    padding:50px 0 25px;
+  }
+
+  .footer-grid {
+    grid-template-columns:1fr 1fr;
+    gap:28px 20px;
+  }
+
+  .footer-brand {
+    grid-column:1 / -1;
+  }
+
+  .footer-bottom {
+    flex-direction:column;
+    gap:10px;
+    text-align:center;
+  }
+
+  .footer-bottom p {
+    margin:0;
+  }
+
+  /* WhatsApp */
+  .whatsapp-float {
+    right:18px;
+    bottom:18px;
+    width:56px;
+    height:56px;
+  }
+}
+
+/* Prevent horizontal scrolling on small screens */
+html,
+body {
+  max-width:100%;
+  overflow-x:hidden;
 }
