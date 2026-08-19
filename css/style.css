@@ -308,6 +308,10 @@ input, select, textarea { width:100%; padding:14px 16px; border:1px solid var(--
     grid-template-columns:1fr;
   }
 
+  .logo-image {
+    height: 28px;
+  }
+
   .form-row {
     flex-direction:column;
   }
