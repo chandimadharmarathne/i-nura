@@ -1,9 +1,47 @@
 // js/script.js
 document.addEventListener('DOMContentLoaded', () => {
-  // Navbar scroll effect
+  // Navbar scroll behavior
+  // Navbar scroll behavior
   const navbar = document.getElementById('navbar');
+  // const hamburger = document.getElementById('hamburger');
+  // const navLinks = document.getElementById('navLinks');
+
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+
+  function handleNavbarScroll() {
+    const currentScrollY = window.scrollY;
+
+    // At the very top
+    if (currentScrollY <= 10) {
+      navbar.classList.remove('nav-hidden');
+      navbar.classList.remove('scrolled');
+
+      lastScrollY = currentScrollY;
+      ticking = false;
+      return;
+    }
+
+    // Scrolling DOWN
+    if (currentScrollY > lastScrollY) {
+      navbar.classList.add('nav-hidden');
+    }
+
+    // Scrolling UP
+    else if (currentScrollY < lastScrollY) {
+      navbar.classList.remove('nav-hidden');
+      navbar.classList.add('scrolled');
+    }
+
+    lastScrollY = currentScrollY;
+    ticking = false;
+  }
+
   window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 10);
+    if (!ticking) {
+      window.requestAnimationFrame(handleNavbarScroll);
+      ticking = true;
+    }
   });
 
   // Mobile menu toggle
@@ -25,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
       const href = this.getAttribute('href');
       if (href === '#') return;
       const target = document.querySelector(href);
