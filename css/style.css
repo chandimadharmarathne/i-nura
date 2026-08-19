@@ -50,7 +50,10 @@ h1, h2, h3, h4, .logo, .section-label, .hero-eyebrow {
 }
 .navbar.scrolled { background: var(--white); box-shadow: var(--shadow-sm); }
 .nav-container { display:flex; align-items:center; justify-content:space-between; height:70px; }
-.logo { font-size:1.6rem; font-weight:700; color:var(--navy); text-decoration:none; }
+/* .logo { font-size:1.6rem; font-weight:700; color:var(--navy); text-decoration:none; } */
+.logo { display: flex; align-items: center; gap: 6px; font-size: 1.6rem; font-weight: 700; color: var(--navy); text-decoration: none;}
+.logo-image { height: 42px; width: auto; display: block; object-fit: contain; }
+.logo-text { display: block; line-height: 1; }
 .nav-links { display:flex; align-items:center; gap:24px; }
 .nav-links ul { display:flex; list-style:none; gap:20px; }
 .nav-links a { text-decoration:none; color:var(--text); font-weight:500; font-size:0.95rem; transition:color var(--transition); }
@@ -210,6 +213,8 @@ input, select, textarea { width:100%; padding:14px 16px; border:1px solid var(--
 @media (max-width:900px) {
   .hamburger {
     display:flex;
+    position:relative;
+    z-index:101; /* stays clickable above the mobile menu */
   }
 
   .nav-links {
@@ -219,14 +224,47 @@ input, select, textarea { width:100%; padding:14px 16px; border:1px solid var(--
     right:0;
     background:white;
     flex-direction:column;
+    align-items:stretch;
     padding:24px;
-    gap:16px;
+    gap:20px;
     display:none;
     box-shadow:var(--shadow-md);
+    z-index:90;
+    max-height:calc(100vh - 70px);
+    overflow-y:auto;
   }
 
   .nav-links.active {
     display:flex;
+  }
+
+  /* THIS is the actual fix — the <ul> was still a row flex container */
+  .nav-links ul {
+    flex-direction:column;
+    width:100%;
+    gap:4px;
+  }
+
+  .nav-links ul li {
+    width:100%;
+  }
+
+  .nav-links ul li a {
+    display:block;
+    width:100%;
+    padding:12px 4px;
+    border-bottom:1px solid var(--border-light);
+  }
+
+  .nav-social {
+    justify-content:center;
+    gap:20px;
+  }
+
+  .nav-cta {
+    width:100%;
+    justify-content:center;
+    text-align:center;
   }
 
   .services-grid,
@@ -244,7 +282,6 @@ input, select, textarea { width:100%; padding:14px 16px; border:1px solid var(--
     font-size:2.8rem;
   }
 
-  /* Footer */
   .footer-grid {
     grid-template-columns:repeat(2, minmax(0, 1fr));
     gap:32px 24px;
