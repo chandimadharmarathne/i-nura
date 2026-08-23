@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Scroll reveal animation
-  const revealElements = document.querySelectorAll('.service-card, .project-card, .why-card, .step');
+  const revealElements = document.querySelectorAll('.about-image, .about-text, .service-card, .project-card, .why-card, .step');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
