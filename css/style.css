@@ -140,7 +140,21 @@ h1, h2, h3, h4, .logo, .section-label, .hero-eyebrow {
 
 /* About */
 .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
-.about-image img { width:100%; border-radius:var(--radius); box-shadow:var(--shadow-md); }
+.about-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.about-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 24px;
+  animation: none !important;
+}
 .about-text h2 { font-size:2.5rem; margin-bottom:20px; }
 .about-highlights { list-style:none; margin:20px 0; display:flex; flex-direction:column; gap:10px; }
 .about-highlights li { display:flex; align-items:center; gap:10px; font-weight:500; }
@@ -224,6 +238,315 @@ input, select, textarea { width:100%; padding:14px 16px; border:1px solid var(--
 .contact-details { display:flex; flex-direction:column; gap:16px; }
 .contact-card { background:var(--white); padding:20px; border-radius:12px; display:flex; align-items:center; gap:12px; border:1px solid var(--border-light); text-decoration:none; color:var(--text); }
 .linkedin-card:hover { border-color:#0A66C2; }
+
+/* ==========================================
+   TECHNOLOGY BACKGROUND ICON SYSTEM
+   ========================================== */
+
+.technologies {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.technologies .container {
+  position: relative;
+  z-index: 5;
+}
+
+.tech-bg-icons {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.tech-bg-icon {
+  position: absolute;
+  font-size: clamp(55px, 6vw, 105px);
+  font-weight: 700;
+  opacity: 0.19;
+  filter: saturate(1.15);
+  animation: technologyFloat 8s ease-in-out infinite;
+  user-select: none;
+}
+
+/* React */
+.icon-react {
+  color: #61DAFB;
+  top: 7%;
+  left: 4%;
+  transform: rotate(-12deg);
+}
+
+/* TypeScript */
+.icon-typescript {
+  color: #3178C6;
+  top: 22%;
+  left: 25%;
+  transform: rotate(8deg);
+}
+
+/* JavaScript */
+.icon-javascript {
+  color: #F7DF1E;
+  top: 4%;
+  right: 28%;
+  transform: rotate(-8deg);
+}
+
+/* HTML */
+.icon-html {
+  color: #E34F26;
+  top: 28%;
+  right: 4%;
+  transform: rotate(10deg);
+}
+
+/* CSS */
+.icon-css {
+  color: #1572B6;
+  bottom: 12%;
+  left: 8%;
+  transform: rotate(-8deg);
+}
+
+/* Node.js */
+.icon-node {
+  color: #339933;
+  top: 45%;
+  left: 4%;
+  transform: rotate(7deg);
+}
+
+/* Python */
+.icon-python {
+  color: #3776AB;
+  bottom: 7%;
+  left: 29%;
+  transform: rotate(-10deg);
+}
+
+/* PostgreSQL */
+.icon-postgres {
+  color: #4169E1;
+  top: 12%;
+  right: 5%;
+  transform: rotate(12deg);
+}
+
+/* MongoDB */
+.icon-mongodb {
+  color: #47A248;
+  bottom: 18%;
+  right: 5%;
+  transform: rotate(-12deg);
+}
+
+/* MySQL */
+.icon-mysql {
+  color: #4479A1;
+  top: 55%;
+  right: 30%;
+  transform: rotate(7deg);
+}
+
+/* Docker */
+.icon-docker {
+  color: #2496ED;
+  top: 42%;
+  left: 28%;
+  transform: rotate(-8deg);
+}
+
+/* AWS */
+.icon-aws {
+  color: #FF9900;
+  bottom: 8%;
+  right: 27%;
+  transform: rotate(9deg);
+}
+
+/* Linux */
+.icon-linux {
+  color: #FCC624;
+  top: 68%;
+  left: 4%;
+  transform: rotate(-7deg);
+}
+
+/* Nginx */
+.icon-nginx {
+  color: #009639;
+  top: 35%;
+  right: 15%;
+  transform: rotate(10deg);
+}
+
+/* GitHub */
+.icon-github {
+  color: #181717;
+  bottom: 4%;
+  right: 42%;
+  transform: rotate(-10deg);
+}
+
+/* Git */
+.icon-git {
+  color: #F05032;
+  top: 10%;
+  left: 45%;
+  transform: rotate(8deg);
+}
+
+/* React Native */
+.icon-reactnative {
+  color: #61DAFB;
+  bottom: 22%;
+  left: 45%;
+  transform: rotate(-6deg);
+}
+
+/* ==========================================
+   AI / SEO / GEO / VOIP CUSTOM ICONS
+   ========================================== */
+
+.custom-ai {
+  color: #8B5CF6;
+}
+
+.custom-seo {
+  color: #4285F4;
+}
+
+.custom-geo {
+  color: #7C3AED;
+}
+
+.custom-asterisk {
+  color: #F15A24;
+}
+
+.custom-freeswitch {
+  color: #00A651;
+}
+
+.custom-mqtt {
+  color: #660066;
+}
+
+/* AI */
+.icon-ai {
+  top: 15%;
+  left: 14%;
+}
+
+/* SEO */
+.icon-seo {
+  top: 60%;
+  left: 20%;
+}
+
+/* GEO */
+.icon-geo {
+  bottom: 10%;
+  right: 10%;
+}
+
+/* Asterisk */
+.icon-asterisk {
+  top: 50%;
+  left: 48%;
+}
+
+/* FreeSWITCH */
+.icon-freeswitch {
+  top: 25%;
+  right: 18%;
+}
+
+/* MQTT */
+.icon-mqtt {
+  bottom: 25%;
+  right: 18%;
+}
+
+
+/* ==========================================
+   FLOATING ANIMATION
+   ========================================== */
+
+@keyframes technologyFloat {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -12px;
+  }
+}
+
+
+/* Slightly different animation timing */
+
+.icon-typescript,
+.icon-python,
+.icon-github,
+.icon-asterisk {
+  animation-delay: -2s;
+}
+
+.icon-javascript,
+.icon-docker,
+.icon-mongodb,
+.icon-geo {
+  animation-delay: -4s;
+}
+
+.icon-postgres,
+.icon-linux,
+.icon-ai,
+.icon-freeswitch {
+  animation-delay: -6s;
+}
+
+
+/* ==========================================
+   MOBILE
+   ========================================== */
+
+@media (max-width: 768px) {
+
+  .tech-bg-icon {
+    font-size: 50px;
+    opacity: 0.055;
+  }
+
+  /* Reduce visual noise on mobile */
+  .icon-javascript,
+  .icon-github,
+  .icon-mysql,
+  .icon-reactnative,
+  .icon-mqtt,
+  .icon-freeswitch {
+    display: none;
+  }
+}
+
+
+/* ==========================================
+   ACCESSIBILITY
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .tech-bg-icon {
+    animation: none;
+  }
+
+}
 
 /* Footer */
 .footer { background:var(--navy); color:rgba(255,255,255,0.8); padding:60px 0 30px; }
@@ -319,6 +642,8 @@ input, select, textarea { width:100%; padding:14px 16px; border:1px solid var(--
   .contact-grid {
     grid-template-columns:1fr;
   }
+
+  .about-image img { height:100%; border-radius:var(--radius); box-shadow:var(--shadow-md); }
 
   .hero h1 {
     font-size:2.8rem;
